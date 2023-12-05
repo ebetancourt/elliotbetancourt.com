@@ -15,17 +15,18 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
-      lineHeight: {
-        11: '2.75rem',
-        12: '3rem',
-        13: '3.25rem',
-        14: '3.5rem',
-      },
       fontFamily: {
-        sans: ['var(--font-space-grotesk)', ...fontFamily.sans],
+        sans: [
+          'Avenir',
+          'Montserrat',
+          'Corbel',
+          'URW Gothic',
+          'source-sans-pro',
+          ...fontFamily.sans,
+        ],
       },
       colors: {
-        primary: colors.pink,
+        primary: colors.red,
         gray: colors.gray,
       },
       typography: ({ theme }) => ({
@@ -39,8 +40,8 @@ module.exports = {
               code: { color: theme('colors.primary.400') },
             },
             'h1,h2': {
-              fontWeight: '700',
-              letterSpacing: theme('letterSpacing.tight'),
+              fontWeight: '800',
+              letterSpacing: theme('letterSpacing.wide'),
             },
             h3: {
               fontWeight: '600',
