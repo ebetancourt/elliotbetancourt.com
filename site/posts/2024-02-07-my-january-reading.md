@@ -5,7 +5,6 @@ lastmod: '2024-02-07'
 tags: ['books', 'reading']
 draft: false
 summary: 'In an effort to read more, I started logging the books I read each month. This is inspired by Cal Newport. I am only logging the books I read for myself, not the books I read to my kids, etc. These are the books I read in January of 2024'
-layout: PostLayout
 ---
 
 ## [Percy Jackson and the Olympians, Book Two: The Sea of Monsters](https://www.amazon.com/Monsters-Percy-Jackson-Olympians-Book-ebook/dp/B00280LYHI/)

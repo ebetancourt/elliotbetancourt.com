@@ -5,7 +5,6 @@ lastmod: '2024-02-01'
 tags: ['books', 'reading']
 draft: false
 summary: 'In an effort to read more, I started logging the books I read each month. This is inspired by Cal Newport. I am only logging the books I read for myself, not the books I read to my kids, etc. These are the books I read in December of 2023'
-layout: PostLayout
 ---
 
 ## [Four Thousand Weeks: Time Management for Mortals](https://www.amazon.com/Four-Thousand-Weeks-Management-Mortals-ebook/dp/B08FGV64B1/)
