@@ -11,7 +11,7 @@ Of course, I first assumed I would just plow through it. I downloaded the first 
 
 After a bit of googling about, I found the perfect resource:
 
-[Cocoacast](http://www.cocoacast.com/) and it used as its Textbook: [â€œCocoa Programming for Mac OS Xâ€ by Aaron Hillegass](http://www.amazon.com/Cocoa-Programming-Mac-OS-2nd/dp/0321213149)
+[Cocoacast](http://www.cocoacast.com/) and it used as its Textbook: [Cocoa Programming for Mac OS by Aaron Hillegass](http://www.amazon.com/Cocoa-Programming-Mac-OS-2nd/dp/0321213149)
 
 It is a very laid back video podcast where the podcaster instructs and screen-casts lessons based on those in the book. It is a very friendl and warm style, but at the same time structured (since it follows the book and has homework), so anyone that wants a college-type environment will find this particular format very enjoyable as well.
 

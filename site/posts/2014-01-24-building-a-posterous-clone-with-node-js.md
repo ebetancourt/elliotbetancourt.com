@@ -7,7 +7,7 @@ tags:
 ---
 This is the first article in a series where we will develop a <a title="Nodejs.org" href="http://nodejs.org" target="_blank">Node Js</a> project from beginning to end.
 
-[<img class="alignnone size-full wp-image-569" alt="node_js_logo_detail" src="https://i1.wp.com/elliotbetancourt.knightlabs.co/wp-content/uploads/2014/01/node_js_logo_detail.png?resize=525%2C179" width="525" height="179" srcset="https://i2.wp.com/elliotbetancourt.com/wp-content/uploads/2014/01/node_js_logo_detail.png?w=574 574w, https://i2.wp.com/elliotbetancourt.com/wp-content/uploads/2014/01/node_js_logo_detail.png?resize=300%2C102 300w" sizes="(max-width: 525px) 100vw, 525px" data-recalc-dims="1" />](https://i1.wp.com/elliotbetancourt.knightlabs.co/wp-content/uploads/2014/01/node_js_logo_detail.png)
+![NodeJs Logo](/images/node_js_logo_detail.png)
 
 **Why Node?**
 
