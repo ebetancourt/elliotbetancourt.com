@@ -4,13 +4,26 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>{{ title | default: "My Blog" }}</title>
+		<link rel="stylesheet" href="/css/styles.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<header>
-			<h1>{{ title | default: "My Blog" }}</h1>
+		<header class="site-header">
+			<nav class="site-nav">
+				<a href="/" class="site-title">Elliot Betancourt.</a>
+				<ul class="nav-links">
+					<li><a href="/blog">Blog</a></li>
+					<li><a href="/about">About</a></li>
+				</ul>
+			</nav>
 		</header>
-		<main>
+		<main class="site-main">
 			{{ content }}
 		</main>
+		<footer class="site-footer">
+			<p>&copy; {{ site.time | date: '%Y' }} {{ title | default: "My Blog" }}</p>
+		</footer>
 	</body>
 </html>
