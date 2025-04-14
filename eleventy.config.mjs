@@ -1,4 +1,5 @@
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 
 export const config = {
     dir: {
@@ -15,6 +16,7 @@ export default function (eleventyConfig) {
 
     eleventyConfig.addPassthroughCopy("site/css");
 
+    eleventyConfig.addPlugin(syntaxHighlight);
     eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
         // output image widths
         widths: ["auto"],
