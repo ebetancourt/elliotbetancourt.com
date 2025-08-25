@@ -1,10 +1,85 @@
 ---
-title: "My Blog"
+title: "Articles - DESIGN.JOURNAL"
 layout: "layout.html"
 tags: "pages"
 override:tags: ["pages"]
 ---
 
-{% for post in collections.posts reversed %}
-    <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
-{% endfor %}
+<section class="recent-section">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">All Articles</h1>
+      <div class="section-divider"></div>
+    </div>
+
+    {% if collections.posts.length > 0 %}
+    <div class="articles-grid">
+      {% for post in collections.posts reversed %}
+      <article class="article-card">
+        <a href="{{ post.url }}" style="text-decoration: none; color: inherit;">
+          <div class="article-image">
+            <div class="image-placeholder">
+              <div class="placeholder-icon" style="width: 3rem; height: 3rem; margin-bottom: 0.5rem;"></div>
+              <p style="font-size: 0.75rem;">Article Image</p>
+            </div>
+          </div>
+          
+          <div class="article-meta">
+            {% if post.data.tags and post.data.tags.length > 0 %}
+              <span class="category-tag">{{ post.data.tags[0] | upcase }}</span>
+            {% endif %}
+            <span>{{ post.data.date | date: '%b %d, %Y' | upcase }}</span>
+          </div>
+          
+          <h2 class="article-title">{{ post.data.title }}</h2>
+          
+          <p class="article-excerpt">
+            {{ post.data.summary or post.templateContent | striptags | truncate: 120 }}
+          </p>
+          
+          <div class="article-footer">
+            <div class="meta-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Elliot Betancourt</span>
+            </div>
+            <span>5 min read</span>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div style="text-align: center; padding: 4rem 0; color: var(--text-secondary);">
+      <h3>No articles yet</h3>
+      <p>Check back soon for new content!</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="newsletter-section" id="newsletter">
+  <div class="container">
+    <div class="newsletter-content">
+      <h2 class="newsletter-title">Stay Updated</h2>
+      <p class="newsletter-description">
+        Subscribe to receive new articles and design insights directly in your inbox.
+      </p>
+      <form class="newsletter-form" action="#" method="POST">
+        <input 
+          type="email" 
+          name="email"
+          placeholder="your@email.com"
+          class="newsletter-input"
+          required
+        />
+        <button type="submit" class="newsletter-button">
+          SUBSCRIBE
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
