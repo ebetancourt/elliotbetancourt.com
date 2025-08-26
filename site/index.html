@@ -32,9 +32,9 @@ pagination:
   </div>
 </section>
 
-{% if blogPosts.length > 0 %}
+{% if blogPosts.size > 0 %}
 <!-- Featured Article Section -->
-{% set featuredPost = blogPosts[0] %}
+{% assign featuredPost = blogPosts[0] %}
 <section class="featured-section">
   <div class="container">
     <div class="featured-content">
@@ -46,7 +46,7 @@ pagination:
           </div>
           <h3 class="featured-title">{{ featuredPost.data.title }}</h3>
           <p class="featured-excerpt">
-            {{ featuredPost.data.summary or featuredPost.templateContent | striptags | truncate: 200 }}
+            {% if featuredPost.data.summary %}{{ featuredPost.data.summary | truncate: 200 }}{% else %}{{ featuredPost.templateContent | strip_html | truncate: 200 }}{% endif %}
           </p>
           <div class="featured-meta">
             <div class="meta-item">
@@ -79,7 +79,7 @@ pagination:
 </section>
 {% endif %}
 
-{% if blogPosts.length > 1 %}
+{% if blogPosts.size > 1 %}
 <!-- Recent Articles Section -->
 <section class="recent-section">
   <div class="container">
@@ -89,8 +89,7 @@ pagination:
     </div>
 
     <div class="articles-grid">
-      {% for post in blogPosts %}
-        {% if loop.index > 1 %}
+      {% for post in blogPosts offset: 1 %}
         <article class="article-card">
           <a href="{{ post.url }}" style="text-decoration: none; color: inherit;">
             <div class="article-image">
@@ -101,7 +100,7 @@ pagination:
             </div>
             
             <div class="article-meta">
-              {% if post.data.tags and post.data.tags.length > 0 %}
+              {% if post.data.tags and post.data.tags.size > 0 %}
                 <span class="category-tag">{{ post.data.tags[0] | upcase }}</span>
               {% endif %}
               <span>{{ post.data.date | date: '%b %d, %Y' | upcase }}</span>
@@ -110,7 +109,7 @@ pagination:
             <h3 class="article-title">{{ post.data.title }}</h3>
             
             <p class="article-excerpt">
-              {{ post.data.summary or post.templateContent | striptags | truncate: 120 }}
+              {% if post.data.summary %}{{ post.data.summary | truncate: 120 }}{% else %}{{ post.templateContent | strip_html | truncate: 120 }}{% endif %}
             </p>
             
             <div class="article-footer">
@@ -125,7 +124,6 @@ pagination:
             </div>
           </a>
         </article>
-        {% endif %}
       {% endfor %}
     </div>
 

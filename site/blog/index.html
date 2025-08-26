@@ -12,9 +12,10 @@ override:tags: ["pages"]
       <div class="section-divider"></div>
     </div>
 
-    {% if collections.posts.length > 0 %}
+    {% if collections.posts.size > 0 %}
     <div class="articles-grid">
-      {% for post in collections.posts reversed %}
+      {% assign sorted_posts = collections.posts | reverse %}
+      {% for post in sorted_posts %}
       <article class="article-card">
         <a href="{{ post.url }}" style="text-decoration: none; color: inherit;">
           <div class="article-image">
@@ -25,7 +26,7 @@ override:tags: ["pages"]
           </div>
           
           <div class="article-meta">
-            {% if post.data.tags and post.data.tags.length > 0 %}
+            {% if post.data.tags and post.data.tags.size > 0 %}
               <span class="category-tag">{{ post.data.tags[0] | upcase }}</span>
             {% endif %}
             <span>{{ post.data.date | date: '%b %d, %Y' | upcase }}</span>
@@ -34,7 +35,7 @@ override:tags: ["pages"]
           <h2 class="article-title">{{ post.data.title }}</h2>
           
           <p class="article-excerpt">
-            {{ post.data.summary or post.templateContent | striptags | truncate: 120 }}
+            {% if post.data.summary %}{{ post.data.summary | truncate: 120 }}{% else %}{{ post.templateContent | strip_html | truncate: 120 }}{% endif %}
           </p>
           
           <div class="article-footer">
