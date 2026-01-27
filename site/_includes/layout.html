@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>{{ title | default: "DESIGN.JOURNAL" }}</title>
+		<title>{{ title | default: "Elliot Betancourt" }}</title>
 		<link rel="stylesheet" href="/css/swiss-design.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,12 +26,11 @@
 					<div class="header-content">
 						<div class="header-left">
 							<h1 class="site-title">
-								<a href="/">DESIGN.JOURNAL</a>
+								<a href="/">ELLIOT<span class="title-period">.</span>BETANCOURT</a>
 							</h1>
 							<nav class="site-nav desktop-nav">
 								<a href="/blog">ARTICLES</a>
 								<a href="/about">ABOUT</a>
-								<a href="#contact">CONTACT</a>
 							</nav>
 						</div>
 						
@@ -75,7 +74,6 @@
 					<nav class="mobile-nav">
 						<a href="/blog">ARTICLES</a>
 						<a href="/about">ABOUT</a>
-						<a href="#contact">CONTACT</a>
 					</nav>
 				</div>
 			</header>
@@ -90,37 +88,36 @@
 				<div class="container">
 					<div class="footer-grid">
 						<div class="footer-column">
-							<h3 class="footer-title">DESIGN.JOURNAL</h3>
+							<h3 class="footer-title">ELLIOT<span class="title-period">.</span>BETANCOURT</h3>
 							<p class="footer-description">
-								Exploring the principles and practice of contemporary design through 
-								critical writing and visual analysis.
+								CTO and AI Engineer with over 20 years of experience architecting business solutions.
 							</p>
 						</div>
-						
+
 						<div class="footer-column">
 							<h4 class="footer-heading">NAVIGATION</h4>
 							<nav class="footer-nav">
 								<a href="/blog">Articles</a>
 								<a href="/about">About</a>
-								<a href="#contact">Contact</a>
-								<a href="#newsletter">Newsletter</a>
+								<a href="mailto:elliot@elliotbetancourt.com">Contact</a>
 							</nav>
 						</div>
-						
+
 						<div class="footer-column">
 							<h4 class="footer-heading">CONNECT</h4>
 							<nav class="footer-nav">
-								<a href="#">Twitter</a>
-								<a href="#">Instagram</a>
-								<a href="#">LinkedIn</a>
-								<a href="#">RSS</a>
+								<a href="https://github.com/ebetancourt" target="_blank" rel="noopener">GitHub</a>
+								<a href="https://www.linkedin.com/in/elliotbetancourt/" target="_blank" rel="noopener">LinkedIn</a>
+								<a href="https://twitter.com/ebetan" target="_blank" rel="noopener">Twitter</a>
+								<a href="https://mastodon.social/@ebetan" target="_blank" rel="noopener noreferrer">Mastodon</a>
+								<a href="https://www.youtube.com/@elliot_betancourt" target="_blank" rel="noopener">YouTube</a>
 							</nav>
 						</div>
 					</div>
-					
+
 					<div class="footer-bottom">
-						<p>© {{ 'now' | date: '%Y' }} Design Journal. All rights reserved.</p>
-						<p>Designed with intention.</p>
+						<p>© {{ 'now' | date: '%Y' }} Elliot Betancourt. All rights reserved.</p>
+						<p>Built with Eleventy.</p>
 					</div>
 				</div>
 			</footer>

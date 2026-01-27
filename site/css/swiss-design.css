@@ -112,6 +112,15 @@ body {
   color: var(--text-primary);
 }
 
+.title-period {
+  color: var(--accent-color);
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1.5em;
+  line-height: 0;
+  position: relative;
+  top: 0.05em;
+}
+
 .desktop-nav {
   display: flex;
   gap: var(--spacing-2xl);
@@ -825,6 +834,102 @@ html[data-theme="dark"] .newsletter-input {
   color: var(--text-primary);
 }
 
+/* About Page Styles */
+.about-section {
+  padding: var(--spacing-3xl) 0;
+}
+
+.about-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-3xl);
+  padding-bottom: var(--spacing-2xl);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.about-avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--border-color);
+  transition: border-color var(--transition-normal);
+}
+
+.about-intro {
+  flex: 1;
+}
+
+.about-name {
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: -0.025em;
+}
+
+.about-title {
+  font-size: 1.25rem;
+  color: var(--accent-color);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-xs);
+}
+
+.about-company {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.about-content {
+  max-width: 65ch;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.about-content p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-secondary);
+}
+
+.about-connect h2 {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-xl);
+  letter-spacing: -0.025em;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: 0.875rem;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.social-link:hover {
+  border-color: var(--accent-color);
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.social-link svg {
+  width: 20px;
+  height: 20px;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .footer-grid {
@@ -898,6 +1003,26 @@ html[data-theme="dark"] .newsletter-input {
 
   .date-day {
     font-size: 1.25rem;
+  }
+
+  /* About page responsive */
+  .about-header {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-xl);
+  }
+
+  .about-avatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  .about-name {
+    font-size: 2rem;
+  }
+
+  .social-links {
+    justify-content: center;
   }
 }
 
