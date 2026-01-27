@@ -13,6 +13,13 @@ export default function (eleventyConfig) {
     // Input directory: site
     // Output directory: _site
 
+    // Add posts collection from blog directory
+    eleventyConfig.addCollection("posts", collection => {
+        return collection.getFilteredByGlob("site/blog/**/*.md").sort((a, b) => {
+            return b.date - a.date; // Sort by date, newest first
+        });
+    });
+
     // The following copies to `_site/images`
     eleventyConfig.addPassthroughCopy("site/images");
     eleventyConfig.addPassthroughCopy("site/css");
