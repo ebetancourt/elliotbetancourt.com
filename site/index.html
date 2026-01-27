@@ -3,8 +3,7 @@ title: "DESIGN.JOURNAL"
 layout: "layout.html"
 pagination:
   data: collections.posts
-  size: 3
-  reverse: true
+  size: 6
   alias: blogPosts
 ---
 
@@ -14,12 +13,12 @@ pagination:
     <div class="hero-content">
       <h2 class="hero-title">
         Thoughts on Design,
-        <span class="hero-accent">Typography</span>,
-        and Visual Culture
+        <span class="hero-accent">Code</span>,
+        and the Web
       </h2>
       <p class="hero-description">
-        A collection of essays exploring the intersection of form, function, 
-        and human experience in contemporary design practice.
+        A collection of notes and musings on software engineering, web development,
+        and the craft of building things.
       </p>
       <a href="/blog" class="hero-cta">
         <span>READ LATEST</span>
@@ -38,42 +37,25 @@ pagination:
 <section class="featured-section">
   <div class="container">
     <div class="featured-content">
-      <div class="featured-grid">
-        <div>
-          <div class="featured-badge">
-            <span class="badge">FEATURED</span>
-            <span>{{ featuredPost.data.date | date: '%b %d, %Y' | upcase }}</span>
-          </div>
-          <h3 class="featured-title">{{ featuredPost.data.title }}</h3>
-          <p class="featured-excerpt">
-            {% if featuredPost.data.summary %}{{ featuredPost.data.summary | truncate: 200 }}{% else %}{{ featuredPost.templateContent | strip_html | truncate: 200 }}{% endif %}
-          </p>
-          <div class="featured-meta">
-            <div class="meta-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
-              <span>Elliot Betancourt</span>
-            </div>
-            <div class="meta-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-              <span>5 min read</span>
-            </div>
+      <a href="{{ featuredPost.url }}" class="featured-link">
+        <div class="featured-badge">
+          <span class="badge">LATEST</span>
+          <span>{{ featuredPost.data.date | date: '%b %d, %Y' | upcase }}</span>
+        </div>
+        <h3 class="featured-title">{{ featuredPost.data.title }}</h3>
+        <p class="featured-excerpt">
+          {% if featuredPost.data.summary %}{{ featuredPost.data.summary | truncate: 280 }}{% else %}{{ featuredPost.templateContent | strip_html | truncate: 280 }}{% endif %}
+        </p>
+        <div class="featured-meta">
+          <div class="meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>Elliot Betancourt</span>
           </div>
         </div>
-        <div class="featured-image">
-          <div class="image-placeholder">
-            <div class="placeholder-icon"></div>
-            <p style="font-size: 0.875rem;">Featured Image</p>
-          </div>
-        </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -88,39 +70,26 @@ pagination:
       <div class="section-divider"></div>
     </div>
 
-    <div class="articles-grid">
+    <div class="articles-list">
       {% for post in blogPosts offset: 1 %}
-        <article class="article-card">
-          <a href="{{ post.url }}" style="text-decoration: none; color: inherit;">
-            <div class="article-image">
-              <div class="image-placeholder">
-                <div class="placeholder-icon" style="width: 3rem; height: 3rem; margin-bottom: 0.5rem;"></div>
-                <p style="font-size: 0.75rem;">Article Image</p>
-              </div>
+        <article class="article-row">
+          <a href="{{ post.url }}" class="article-row-link">
+            <div class="article-row-date">
+              <span class="date-month">{{ post.data.date | date: '%b' | upcase }}</span>
+              <span class="date-day">{{ post.data.date | date: '%d' }}</span>
+              <span class="date-year">{{ post.data.date | date: '%Y' }}</span>
             </div>
-            
-            <div class="article-meta">
-              {% if post.data.tags and post.data.tags.size > 0 %}
-                <span class="category-tag">{{ post.data.tags[0] | upcase }}</span>
-              {% endif %}
-              <span>{{ post.data.date | date: '%b %d, %Y' | upcase }}</span>
+            <div class="article-row-content">
+              <h3 class="article-row-title">{{ post.data.title }}</h3>
+              <p class="article-row-excerpt">
+                {% if post.data.summary %}{{ post.data.summary | truncate: 150 }}{% else %}{{ post.templateContent | strip_html | truncate: 150 }}{% endif %}
+              </p>
             </div>
-            
-            <h3 class="article-title">{{ post.data.title }}</h3>
-            
-            <p class="article-excerpt">
-              {% if post.data.summary %}{{ post.data.summary | truncate: 120 }}{% else %}{{ post.templateContent | strip_html | truncate: 120 }}{% endif %}
-            </p>
-            
-            <div class="article-footer">
-              <div class="meta-item">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-                <span>Elliot Betancourt</span>
-              </div>
-              <span>5 min read</span>
+            <div class="article-row-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12,5 19,12 12,19"></polyline>
+              </svg>
             </div>
           </a>
         </article>

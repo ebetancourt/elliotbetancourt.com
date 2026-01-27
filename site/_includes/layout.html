@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +8,18 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+		<script>
+			// Apply saved theme immediately to prevent flash
+			(function() {
+				const savedTheme = localStorage.getItem('theme');
+				if (savedTheme) {
+					document.documentElement.setAttribute('data-theme', savedTheme);
+				}
+			})();
+		</script>
 	</head>
 	<body>
-		<div class="site-wrapper" data-theme="light">
+		<div class="site-wrapper">
 			<!-- Header -->
 			<header class="site-header">
 				<div class="container">
@@ -120,23 +129,19 @@
 		<script>
 			// Dark mode toggle
 			const themeToggle = document.querySelector('.theme-toggle');
-			const siteWrapper = document.querySelector('.site-wrapper');
-			
-			// Check for saved theme preference or default to light
-			const savedTheme = localStorage.getItem('theme') || 'light';
-			siteWrapper.setAttribute('data-theme', savedTheme);
-			
+			const htmlElement = document.documentElement;
+
 			themeToggle.addEventListener('click', () => {
-				const currentTheme = siteWrapper.getAttribute('data-theme');
+				const currentTheme = htmlElement.getAttribute('data-theme');
 				const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-				siteWrapper.setAttribute('data-theme', newTheme);
+				htmlElement.setAttribute('data-theme', newTheme);
 				localStorage.setItem('theme', newTheme);
 			});
-			
+
 			// Mobile menu toggle
 			const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
 			const mobileMenu = document.querySelector('.mobile-menu');
-			
+
 			mobileMenuToggle.addEventListener('click', () => {
 				mobileMenu.classList.toggle('active');
 				mobileMenuToggle.classList.toggle('active');

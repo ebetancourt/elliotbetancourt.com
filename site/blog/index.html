@@ -13,40 +13,26 @@ override:tags: ["pages"]
     </div>
 
     {% if collections.posts.size > 0 %}
-    <div class="articles-grid">
-      {% assign sorted_posts = collections.posts | reverse %}
-      {% for post in sorted_posts %}
-      <article class="article-card">
-        <a href="{{ post.url }}" style="text-decoration: none; color: inherit;">
-          <div class="article-image">
-            <div class="image-placeholder">
-              <div class="placeholder-icon" style="width: 3rem; height: 3rem; margin-bottom: 0.5rem;"></div>
-              <p style="font-size: 0.75rem;">Article Image</p>
-            </div>
+    <div class="articles-list">
+      {% for post in collections.posts %}
+      <article class="article-row">
+        <a href="{{ post.url }}" class="article-row-link">
+          <div class="article-row-date">
+            <span class="date-month">{{ post.data.date | date: '%b' | upcase }}</span>
+            <span class="date-day">{{ post.data.date | date: '%d' }}</span>
+            <span class="date-year">{{ post.data.date | date: '%Y' }}</span>
           </div>
-          
-          <div class="article-meta">
-            {% if post.data.tags and post.data.tags.size > 0 %}
-              <span class="category-tag">{{ post.data.tags[0] | upcase }}</span>
-            {% endif %}
-            <span>{{ post.data.date | date: '%b %d, %Y' | upcase }}</span>
+          <div class="article-row-content">
+            <h2 class="article-row-title">{{ post.data.title }}</h2>
+            <p class="article-row-excerpt">
+              {% if post.data.summary %}{{ post.data.summary | truncate: 150 }}{% else %}{{ post.templateContent | strip_html | truncate: 150 }}{% endif %}
+            </p>
           </div>
-          
-          <h2 class="article-title">{{ post.data.title }}</h2>
-          
-          <p class="article-excerpt">
-            {% if post.data.summary %}{{ post.data.summary | truncate: 120 }}{% else %}{{ post.templateContent | strip_html | truncate: 120 }}{% endif %}
-          </p>
-          
-          <div class="article-footer">
-            <div class="meta-item">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
-              <span>Elliot Betancourt</span>
-            </div>
-            <span>5 min read</span>
+          <div class="article-row-arrow">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12,5 19,12 12,19"></polyline>
+            </svg>
           </div>
         </a>
       </article>
