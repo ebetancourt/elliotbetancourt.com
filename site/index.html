@@ -1,0 +1,108 @@
+---
+title: "Elliot Betancourt"
+layout: "layout.html"
+pagination:
+  data: collections.posts
+  size: 6
+  alias: blogPosts
+---
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-content">
+      <h2 class="hero-title">
+        Code, <span class="hero-accent">AI</span>,
+        and the Craft of Building
+      </h2>
+      <p class="hero-description">
+        Exploring software engineering, artificial intelligence, and the tools reshaping how we create.
+      </p>
+      <a href="/blog" class="hero-cta">
+        <span>READ LATEST</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12,5 19,12 12,19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% if blogPosts.size > 0 %}
+<!-- Featured Article Section -->
+{% assign featuredPost = blogPosts[0] %}
+<section class="featured-section">
+  <div class="container">
+    <div class="featured-content">
+      <a href="{{ featuredPost.url }}" class="featured-link">
+        <div class="featured-badge">
+          <span class="badge">LATEST</span>
+          <span>{{ featuredPost.data.date | date: '%b %d, %Y' | upcase }}</span>
+        </div>
+        <h3 class="featured-title">{{ featuredPost.data.title }}</h3>
+        <p class="featured-excerpt">
+          {% if featuredPost.data.summary %}{{ featuredPost.data.summary | truncate: 280 }}{% else %}{{ featuredPost.templateContent | strip_html | truncate: 280 }}{% endif %}
+        </p>
+        <div class="featured-meta">
+          <div class="meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>Elliot Betancourt</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if blogPosts.size > 1 %}
+<!-- Recent Articles Section -->
+<section class="recent-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Recent Articles</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="articles-list">
+      {% for post in blogPosts offset: 1 %}
+        <article class="article-row">
+          <a href="{{ post.url }}" class="article-row-link">
+            <div class="article-row-date">
+              <span class="date-month">{{ post.data.date | date: '%b' | upcase }}</span>
+              <span class="date-day">{{ post.data.date | date: '%d' }}</span>
+              <span class="date-year">{{ post.data.date | date: '%Y' }}</span>
+            </div>
+            <div class="article-row-content">
+              <h3 class="article-row-title">{{ post.data.title }}</h3>
+              <p class="article-row-excerpt">
+                {% if post.data.summary %}{{ post.data.summary | truncate: 150 }}{% else %}{{ post.templateContent | strip_html | truncate: 150 }}{% endif %}
+              </p>
+            </div>
+            <div class="article-row-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12,5 19,12 12,19"></polyline>
+              </svg>
+            </div>
+          </a>
+        </article>
+      {% endfor %}
+    </div>
+
+    <div class="view-all-cta">
+      <a href="/blog" class="cta-button">
+        <span>VIEW ALL ARTICLES</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12,5 19,12 12,19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+{% endif %}

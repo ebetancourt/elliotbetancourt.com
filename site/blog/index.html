@@ -1,0 +1,72 @@
+---
+title: "Articles - Elliot Betancourt"
+layout: "layout.html"
+tags: "pages"
+override:tags: ["pages"]
+---
+
+<section class="recent-section">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">All Articles</h1>
+      <div class="section-divider"></div>
+    </div>
+
+    {% if collections.posts.size > 0 %}
+    <div class="articles-list">
+      {% for post in collections.posts %}
+      <article class="article-row">
+        <a href="{{ post.url }}" class="article-row-link">
+          <div class="article-row-date">
+            <span class="date-month">{{ post.data.date | date: '%b' | upcase }}</span>
+            <span class="date-day">{{ post.data.date | date: '%d' }}</span>
+            <span class="date-year">{{ post.data.date | date: '%Y' }}</span>
+          </div>
+          <div class="article-row-content">
+            <h2 class="article-row-title">{{ post.data.title }}</h2>
+            <p class="article-row-excerpt">
+              {% if post.data.summary %}{{ post.data.summary | truncate: 150 }}{% else %}{{ post.templateContent | strip_html | truncate: 150 }}{% endif %}
+            </p>
+          </div>
+          <div class="article-row-arrow">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12,5 19,12 12,19"></polyline>
+            </svg>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div style="text-align: center; padding: 4rem 0; color: var(--text-secondary);">
+      <h3>No articles yet</h3>
+      <p>Check back soon for new content!</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="newsletter-section" id="newsletter">
+  <div class="container">
+    <div class="newsletter-content">
+      <h2 class="newsletter-title">Stay Updated</h2>
+      <p class="newsletter-description">
+        Subscribe to receive new articles and design insights directly in your inbox.
+      </p>
+      <form class="newsletter-form" action="#" method="POST">
+        <input 
+          type="email" 
+          name="email"
+          placeholder="your@email.com"
+          class="newsletter-input"
+          required
+        />
+        <button type="submit" class="newsletter-button">
+          SUBSCRIBE
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

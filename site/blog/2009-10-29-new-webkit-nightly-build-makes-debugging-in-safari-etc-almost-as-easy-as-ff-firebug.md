@@ -1,0 +1,40 @@
+---
+title: 'New Webkit Nightly Build Makes Debugging In Safari, etc. Almost as Easy as FF & Firebug'
+date: 2009-10-29T09:17:44+00:00
+format: aside
+---
+If you are a web developer that does heavy CSS / Javascript, you have to check out the latest Inspector from the webkit team, its pretty close to the power of firebug.
+
+&nbsp;
+
+its still Beta quality (its only in the nightly builds), and as far as I don&#8217;t know it doesn&#8217;t have a plugin architecture like Firebug. But the bones of it is there:
+
+&nbsp;
+
+Element inspector, CSS display, CSS Editing editing selectors, adding new , live html editing, deleting elements etc.
+
+&nbsp;
+
+A lot of the features were there before, but were not as user-friendly or discoverable. And of course you get the standard Javascript debugging with breakpoints and console, etc.
+
+Read about the improvements here:
+
+&nbsp;
+
+[Improving the Web Inspector](http://blog.bogojoker.com/2009/10/improving-the-web-inspector/)
+
+&nbsp;
+
+Get WebKit here:
+
+&nbsp;
+
+[Webkit Nightly](http://nightly.webkit.org/)
+
+&nbsp;
+
+C&#8217;mon Microsoft, step up your game, IE is way behind the pack here.
+
+&nbsp;
+
+if it wasn&#8217;t for their market share, I would refuse to support IE.
