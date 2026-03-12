@@ -23,6 +23,7 @@ export default function (eleventyConfig) {
     // The following copies to `_site/images`
     eleventyConfig.addPassthroughCopy("site/images");
     eleventyConfig.addPassthroughCopy("site/css");
+    eleventyConfig.addPassthroughCopy("site/resources/files");
 
     eleventyConfig.addPlugin(syntaxHighlight);
     eleventyConfig.addPlugin(eleventyImageTransformPlugin, {

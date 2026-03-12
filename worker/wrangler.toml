@@ -1,0 +1,10 @@
+name = "elliotbetancourt-contact-form"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+EMAILOCTOPUS_LIST_ID = "5d9d842c-aa91-11ee-b601-2bca8e4b2516"
+CONTACT_BRAND = "elliotbetancourt"
+ALLOWED_ORIGIN = "https://elliotbetancourt.com"
+
+# API key is set as a secret: npx wrangler secret put EMAILOCTOPUS_API_KEY
