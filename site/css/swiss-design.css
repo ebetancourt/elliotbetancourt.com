@@ -1030,16 +1030,218 @@ html[data-theme="dark"] .newsletter-input {
   .newsletter-form {
     flex-direction: column;
   }
-  
+
   .articles-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .post-header {
     padding: var(--spacing-2xl) 0 var(--spacing-lg) 0;
   }
-  
+
   .post-content {
     padding: var(--spacing-xl) 0;
+  }
+}
+
+/* ==========================================================================
+   Resource / Lead Magnet Landing Pages
+   ========================================================================== */
+
+.resource-hero {
+  padding: var(--spacing-3xl) 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.resource-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-3xl);
+  align-items: start;
+}
+
+.resource-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.1em;
+  color: var(--accent-color);
+  margin-bottom: var(--spacing-md);
+}
+
+.resource-title {
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: var(--spacing-md);
+}
+
+.resource-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.5;
+}
+
+.resource-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.preview-card {
+  background-color: var(--bg-accent);
+  padding: var(--spacing-2xl);
+  border-left: 3px solid var(--accent-color);
+  transition: background-color var(--transition-normal);
+}
+
+.preview-heading {
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.1em;
+  margin-bottom: var(--spacing-lg);
+}
+
+.preview-list {
+  list-style: none;
+  counter-reset: preview-counter;
+  padding: 0;
+  margin: 0 0 var(--spacing-lg) 0;
+}
+
+.preview-list li {
+  counter-increment: preview-counter;
+  padding: var(--spacing-sm) 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.preview-list li:last-child {
+  border-bottom: none;
+}
+
+.preview-list li::before {
+  content: counter(preview-counter) ".";
+  font-weight: var(--font-weight-bold);
+  color: var(--accent-color);
+  margin-right: var(--spacing-sm);
+}
+
+.preview-note {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Form Section */
+
+.resource-form-section {
+  padding: var(--spacing-3xl) 0;
+}
+
+.resource-form-content {
+  max-width: 32rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.resource-form-title {
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.1em;
+  margin-bottom: var(--spacing-md);
+}
+
+.resource-form-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xl);
+}
+
+.resource-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.form-row {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.resource-input {
+  flex: 1;
+  padding: var(--spacing-md);
+  font-size: 0.875rem;
+  font-family: var(--font-sans);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: border-color var(--transition-fast), background-color var(--transition-normal), color var(--transition-normal);
+}
+
+html[data-theme="dark"] .resource-input {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.resource-input::placeholder {
+  color: var(--text-light);
+}
+
+.resource-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.resource-button {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-semibold);
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.resource-button:hover {
+  background-color: var(--accent-hover);
+}
+
+.resource-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-fine-print {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+.form-success {
+  text-align: center;
+}
+
+/* Resource page responsive */
+
+@media (max-width: 768px) {
+  .resource-hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .resource-title {
+    font-size: 2rem;
+  }
+
+  .form-row {
+    flex-direction: column;
   }
 }

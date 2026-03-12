@@ -1,0 +1,90 @@
+---
+title: "The First 30 Days: A Fractional CTO's Field Checklist"
+layout: "layout.html"
+---
+
+<section class="resource-hero">
+  <div class="container">
+    <div class="resource-hero-grid">
+      <div class="resource-hero-content">
+        <span class="resource-label">FREE CHECKLIST</span>
+        <h2 class="resource-title">The First 30 Days</h2>
+        <p class="resource-subtitle">A Fractional CTO's field checklist for new engagements</p>
+        <p class="resource-description">
+          Every engagement starts the same way &mdash; you walk into a codebase, a team, and a set of problems no one fully agrees on. This is the checklist I run through in the first 30 days. What to diagnose, what to fix immediately, and what to leave alone.
+        </p>
+      </div>
+      <div class="resource-hero-preview">
+        <div class="preview-card">
+          <h3 class="preview-heading">THE FOUR WEEKS</h3>
+          <ol class="preview-list">
+            <li><strong>Week 1: Diagnose</strong> &mdash; Map the real system, not the documented one</li>
+            <li><strong>Week 2: Quick Wins</strong> &mdash; Build trust by fixing what the team feels</li>
+            <li><strong>Week 3: Install Systems</strong> &mdash; Create the rhythm that outlasts you</li>
+            <li><strong>Week 4: Baseline</strong> &mdash; Make progress measurable, start the handoff</li>
+          </ol>
+          <p class="preview-note">What to do &mdash; and just as important, what to leave alone.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="resource-form-section">
+  <div class="container">
+    <div class="resource-form-content">
+      <h3 class="resource-form-title">GET THE CHECKLIST</h3>
+      <p class="resource-form-description">
+        Enter your name and email and I'll send you the full checklist &mdash; the same one I use when I start a new fractional CTO engagement.
+      </p>
+      <form id="lead-magnet-form" class="resource-form">
+        <input type="hidden" name="leadMagnet" value="first-30-days-checklist" />
+        <div class="form-row">
+          <input type="text" id="name" name="name" placeholder="Your name" class="resource-input" required />
+          <input type="email" id="email" name="email" placeholder="your@email.com" class="resource-input" required />
+        </div>
+        <button type="submit" class="resource-button">SEND ME THE CHECKLIST</button>
+        <p class="form-fine-print">No spam. Just the checklist. Unsubscribe anytime.</p>
+      </form>
+      <div id="form-success" class="form-success" style="display: none;">
+        <h3 class="resource-form-title">CHECK YOUR INBOX</h3>
+        <p class="resource-form-description">
+          The checklist is on its way. If you don't see it in a few minutes, check your spam folder.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var FORM_ENDPOINT = 'https://elliotbetancourt-contact-form.elliot-ee6.workers.dev';
+  var form = document.getElementById('lead-magnet-form');
+  var success = document.getElementById('form-success');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var button = form.querySelector('button');
+    button.disabled = true;
+    button.textContent = 'SENDING...';
+
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var leadMagnet = form.querySelector('input[name="leadMagnet"]').value;
+
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, leadMagnet: leadMagnet })
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Submission failed');
+      form.style.display = 'none';
+      success.style.display = 'block';
+    })
+    .catch(function() {
+      button.disabled = false;
+      button.textContent = 'SEND ME THE CHECKLIST';
+      alert('Something went wrong. Please try again or email elliot@elliotbetancourt.com');
+    });
+  });
+</script>

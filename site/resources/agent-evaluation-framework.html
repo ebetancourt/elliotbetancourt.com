@@ -1,0 +1,91 @@
+---
+title: "The Agent Evaluation Framework"
+layout: "layout.html"
+---
+
+<section class="resource-hero">
+  <div class="container">
+    <div class="resource-hero-grid">
+      <div class="resource-hero-content">
+        <span class="resource-label">FREE FRAMEWORK</span>
+        <h2 class="resource-title">The Agent Evaluation Framework</h2>
+        <p class="resource-subtitle">Where AI agents actually make sense (and where they don't)</p>
+        <p class="resource-description">
+          I use this framework with every client engagement. Before we write a single line of agent code, we score the candidate process across five dimensions. Takes 10 minutes. Saves months of wasted effort.
+        </p>
+      </div>
+      <div class="resource-hero-preview">
+        <div class="preview-card">
+          <h3 class="preview-heading">THE FIVE DIMENSIONS</h3>
+          <ol class="preview-list">
+            <li><strong>Trigger Clarity</strong> &mdash; Is it repeatable?</li>
+            <li><strong>Data Availability</strong> &mdash; Is the input structured?</li>
+            <li><strong>Output Predictability</strong> &mdash; Is the decision space bounded?</li>
+            <li><strong>Risk Tolerance</strong> &mdash; What's the cost of error?</li>
+            <li><strong>ROI Signal</strong> &mdash; What's the current time cost?</li>
+          </ol>
+          <p class="preview-note">Score each 1&ndash;5. Add them up. Know exactly where to start.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="resource-form-section">
+  <div class="container">
+    <div class="resource-form-content">
+      <h3 class="resource-form-title">GET THE FRAMEWORK</h3>
+      <p class="resource-form-description">
+        Enter your name and email and I'll send you the one-page framework &mdash; the same one I use with clients to evaluate AI agent opportunities.
+      </p>
+      <form id="lead-magnet-form" class="resource-form">
+        <input type="hidden" name="leadMagnet" value="agent-evaluation-framework" />
+        <div class="form-row">
+          <input type="text" id="name" name="name" placeholder="Your name" class="resource-input" required />
+          <input type="email" id="email" name="email" placeholder="your@email.com" class="resource-input" required />
+        </div>
+        <button type="submit" class="resource-button">SEND ME THE FRAMEWORK</button>
+        <p class="form-fine-print">No spam. Just the framework. Unsubscribe anytime.</p>
+      </form>
+      <div id="form-success" class="form-success" style="display: none;">
+        <h3 class="resource-form-title">CHECK YOUR INBOX</h3>
+        <p class="resource-form-description">
+          The framework is on its way. If you don't see it in a few minutes, check your spam folder.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var FORM_ENDPOINT = 'https://elliotbetancourt-contact-form.elliot-ee6.workers.dev';
+  var form = document.getElementById('lead-magnet-form');
+  var success = document.getElementById('form-success');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var button = form.querySelector('button');
+    button.disabled = true;
+    button.textContent = 'SENDING...';
+
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var leadMagnet = form.querySelector('input[name="leadMagnet"]').value;
+
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, leadMagnet: leadMagnet })
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Submission failed');
+      form.style.display = 'none';
+      success.style.display = 'block';
+    })
+    .catch(function() {
+      button.disabled = false;
+      button.textContent = 'SEND ME THE FRAMEWORK';
+      alert('Something went wrong. Please try again or email elliot@elliotbetancourt.com');
+    });
+  });
+</script>
