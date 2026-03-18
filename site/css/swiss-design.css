@@ -70,6 +70,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
 .site-wrapper {
   min-height: 100vh;
   transition: background-color var(--transition-normal);
@@ -136,6 +147,7 @@ body {
 
 .desktop-nav a:hover {
   color: var(--accent-color);
+  text-decoration: none;
 }
 
 .header-right {
@@ -229,6 +241,7 @@ html[data-theme="dark"] .theme-toggle {
 
 .mobile-nav a:hover {
   color: var(--accent-color);
+  text-decoration: none;
 }
 
 /* Main Content */
@@ -286,6 +299,7 @@ html[data-theme="dark"] .hero-cta {
 
 .hero-cta:hover {
   background-color: var(--text-secondary);
+  text-decoration: none;
 }
 
 html[data-theme="dark"] .hero-cta:hover {
@@ -505,6 +519,10 @@ html[data-theme="dark"] .hero-cta:hover {
 }
 
 .article-row-link:hover {
+  text-decoration: none;
+}
+
+.article-row-link:hover {
   background-color: var(--bg-accent);
   margin: 0 calc(-1 * var(--spacing-lg));
   padding-left: var(--spacing-lg);
@@ -577,7 +595,8 @@ html[data-theme="dark"] .hero-cta:hover {
 }
 
 /* Featured Link Style */
-.featured-link {
+.featured-link,
+.featured-link:hover {
   display: block;
   text-decoration: none;
   color: inherit;
@@ -604,6 +623,7 @@ html[data-theme="dark"] .hero-cta:hover {
 .cta-button:hover {
   background-color: var(--text-primary);
   color: var(--bg-primary);
+  text-decoration: none;
 }
 
 /* Newsletter Section */
@@ -733,6 +753,7 @@ html[data-theme="dark"] .newsletter-input {
 
 .footer-nav a:hover {
   color: var(--accent-color);
+  text-decoration: none;
 }
 
 .footer-bottom {
@@ -923,6 +944,7 @@ html[data-theme="dark"] .newsletter-input {
   border-color: var(--accent-color);
   background-color: var(--accent-color);
   color: white;
+  text-decoration: none;
 }
 
 .social-link svg {
@@ -1213,6 +1235,7 @@ html[data-theme="dark"] .resource-input {
 
 .resource-button:hover {
   background-color: var(--accent-hover);
+  text-decoration: none;
 }
 
 .resource-button:disabled {

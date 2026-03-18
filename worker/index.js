@@ -11,6 +11,10 @@ const LEAD_MAGNETS = {
     fileUrl: 'https://elliotbetancourt.com/resources/files/first-30-days-checklist.pdf',
     description: 'First 30 Days AI Agent Checklist',
   },
+  'ai-roi-measurement': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/ai-roi-measurement.pdf',
+    description: 'AI ROI Measurement Framework PDF',
+  },
 };
 
 export default {
