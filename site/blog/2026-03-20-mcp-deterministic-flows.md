@@ -15,11 +15,11 @@ This is Part 3: the reliability problem. And the answer that surprised me.
 
 I've been building JARVIS — a multi-agent system that runs my consultancy — for about three months now. I can prototype an agent in an afternoon. Three months ago that took a week.
 
-But shipping one that actually works? One that humans trust enough to delegate to without checking? That still takes the same amount of time.
+But shipping one that actually works? One that humans trust enough to delegate to without checking? That still takes the same amount of time it always did.
 
 The creative work got faster. The operational work didn't.
 
-## The Data Confirms It
+## The Data Backs This Up
 
 [MCPAgentBench](https://arxiv.org/html/2512.24565v1) tested how well AI agents perform when given tools to use:
 
@@ -28,43 +28,43 @@ The creative work got faster. The operational work didn't.
 - **Parallel multi-tool tasks:** 24% average
 - **OpenAI's best models on dual parallel tasks:** 0%
 
-Not low — zero.
+Not low. Zero.
 
-When an agent has to decide which of 20-30 tools to use, in what order, with what parameters, performance collapses. Every autonomous decision point is a potential failure mode. And in production, potential failure modes become actual failure modes on a schedule.
+When an agent has to decide which of 20-30 tools to use, in what order, with what parameters, performance collapses. Every autonomous decision point is a potential failure mode. And in production, potential failure modes become actual failure modes on a predictable schedule.
 
-## The Pattern: Creative Judgment vs. Operational Execution
+## What Actually Works: Let the AI Think, Let the Code Execute
 
-Here's what I landed on after three iterations of JARVIS:
+I landed on this after three iterations of JARVIS, and I think it's the most important architectural decision I've made.
 
-**Let the LLM handle creative judgment.** Writing, reasoning, analysis, synthesis — these are genuinely hard problems where probabilistic models excel. When I need an agent to draft a post, analyze a dataset, or reason through a strategy question, the LLM is the right tool.
+Let the LLM handle creative judgment. Writing, reasoning, analysis, synthesis. These are genuinely hard problems where probabilistic models shine. When I need an agent to draft a post, analyze a dataset, or reason through a strategy question, the LLM is the right tool.
 
-**Let scripts handle everything that has to be right every time.** Scheduling posts, syncing data, deploying changes, moving items between systems. No model in the loop. No model deciding whether to run the script. The script just runs.
+Let scripts handle everything that has to be right every time. Scheduling posts, syncing data, deploying changes, moving items between systems. No model in the loop. No model deciding whether to run the script. The script just runs.
 
-My content pipeline is a good example. The pipeline structure — Research → Angle → Draft → De-AI → Voice → Polish — is completely deterministic. The agent doesn't decide what step comes next. The code does. But within each step, the LLM does genuine creative work.
+My content pipeline is a good example. The pipeline structure (Research → Angle → Draft → De-AI → Voice → Polish) is completely deterministic. The agent doesn't decide what step comes next. The code does. But within each step, the LLM does genuine creative work.
 
 The scheduling script that pushes to Buffer? Pure bash. The data sync between Todoist and my planning system? A cron job. The deployment process? A shell script that runs on a $6/month server.
 
-These aren't sophisticated. They're reliable. And in production, reliable beats sophisticated every single time.
+These aren't sophisticated. They're reliable. And in production, reliable beats sophisticated EVERY time.
 
-## The Industry Figured This Out Too
+## The Industry Landed Here Too
 
-Every major agent framework has arrived at the same conclusion:
+Every major agent framework has arrived at the same conclusion.
 
-**CrewAI** split its architecture into two modes: "Crews" for autonomous experimentation and "Flows" for production workloads. The naming tells you everything — production gets deterministic flows.
+**CrewAI** split its architecture into two modes: "Crews" for autonomous experimentation and "Flows" for production workloads. The naming tells you everything. Production gets deterministic flows.
 
 **LangGraph** uses conditional edges that look agentic but are actually developer-defined paths. The agent appears to "choose" a direction, but the developer pre-specified every possible path. The autonomy is bounded.
 
-**Temporal** — the workflow orchestration platform — insists on deterministic workflows specifically so a run can replay exactly after failures. When you need absolute reliability guarantees, you remove the agent from the decision loop entirely.
+**Temporal** insists on deterministic workflows specifically so a run can replay exactly after failures. When you need absolute reliability guarantees, you remove the agent from the decision loop entirely.
 
-[Gartner predicted](https://www.gartner.com/en) that over 40% of agentic AI projects will be scrapped by 2027. Not because models fail, but because teams cannot operationalize them reliably. The operational reliability problem is the bottleneck, not model capability.
+[Gartner predicted](https://www.gartner.com/en) that over 40% of agentic AI projects will be scrapped by 2027. Not because models fail, but because teams cannot operationalize them reliably. The bottleneck isn't model capability. It's operational reliability.
 
 ## When Should Agents Actually Improvise?
 
-I'm not arguing that autonomy is always bad. It's essential in specific contexts:
+I'm not arguing that autonomy is always bad. It's essential in specific contexts.
 
 **Novel problems.** When you genuinely don't know the solution path, a deterministic workflow can't be written. Autonomous agents are excellent R&D tools for exploring unknown territory.
 
-**The hybrid prototyping pattern.** Deploy an autonomous agent on a new, poorly-defined problem. When it solves it successfully, reverse-engineer the successful approach into a deterministic workflow. Autonomy is the R&D phase; determinism is the production phase.
+**The hybrid prototyping pattern.** Deploy an autonomous agent on a new, poorly-defined problem. When it solves it successfully, reverse-engineer the successful approach into a deterministic workflow. Autonomy is the R&D phase. Determinism is the production phase. I think most teams will land on some version of this loop (even if they don't call it that).
 
 **Creative generation within bounded steps.** This is the nuanced case. The agent improvises the *content* — what words to write, what analysis to produce — but the *process* is deterministic. This is exactly how my content pipeline operates.
 
@@ -76,11 +76,9 @@ Most "agentic" pipelines in production are about 80% deterministic flow with 20%
 
 ## Tying the Series Together
 
-The three MCP problems — token cost, security surface, reliability — all have the same root cause and the same solution.
+The three MCP problems — token cost, security surface, reliability — all share a root cause. MCP's power comes from giving agents access to many tools. But many tools means large tool definitions (token cost), broad attack surface (security), and a decision space complex enough to guarantee reliability failures.
 
-**The cause:** MCP's power comes from giving agents access to many tools. But many tools means large tool definitions (token cost), broad attack surface (security), and complex decision space (reliability failures).
-
-**The solution:** Constrain the agent's decision surface. Pre-define what tools are available, in what sequence, under what conditions. Use skills (pre-packaged workflows) instead of raw tool access. Let the agent be creative where creativity matters, and deterministic where correctness matters.
+The fix is the same across all three: constrain the agent's decision surface. Pre-define what tools are available, in what sequence, under what conditions. Use skills (pre-packaged workflows) instead of raw tool access. Let the agent be creative where creativity matters, and deterministic where correctness matters.
 
 The most reliable agent isn't the most autonomous one. It's the one where someone thought carefully about which decisions should be made by a model and which should be made by code.
 
