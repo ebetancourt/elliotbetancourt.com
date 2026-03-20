@@ -1,0 +1,92 @@
+---
+title: "Agent Performance Review"
+layout: "layout.html"
+---
+
+<section class="resource-hero">
+  <div class="container">
+    <div class="resource-hero-grid">
+      <div class="resource-hero-content">
+        <span class="resource-label">FREE TEMPLATE</span>
+        <h2 class="resource-title">Agent Performance Review</h2>
+        <p class="resource-subtitle">A one-page framework for evaluating your AI agents</p>
+        <p class="resource-description">Most teams deploy AI agents without ever evaluating them. This template gives you 10 categories to score any agent &mdash; from reliability to true cost of ownership. Rate each 1-5, run it quarterly, and know exactly which agents to expand, retrain, or retire.</p>
+      </div>
+      <div class="resource-hero-preview">
+        <div class="preview-card">
+          <h3 class="preview-heading">10 EVALUATION CATEGORIES</h3>
+          <ol class="preview-list">
+            <li><strong>Identity & Role</strong> &mdash; Name, function, domain, owner</li>
+            <li><strong>Reliability</strong> &mdash; Uptime, error rate, recovery time</li>
+            <li><strong>Output Quality</strong> &mdash; Accuracy, consistency, override rate</li>
+            <li><strong>Efficiency</strong> &mdash; Cost per task, tokens, completion time</li>
+            <li><strong>Autonomy Level</strong> &mdash; Autonomous / supervised / manual</li>
+            <li><strong>Risk Profile</strong> &mdash; Failure impact and blast radius</li>
+            <li><strong>Collaboration</strong> &mdash; Handoff quality to humans and agents</li>
+            <li><strong>Growth Trajectory</strong> &mdash; Is it improving over time?</li>
+            <li><strong>True Cost of Ownership</strong> &mdash; Infrastructure + API + oversight</li>
+            <li><strong>Recommendation</strong> &mdash; Continue / Expand / Retrain / Replace / Retire</li>
+          </ol>
+          <p class="preview-note">Plus a scoring guide to make the call.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="resource-form-section">
+  <div class="container">
+    <div class="resource-form-content">
+      <h3 class="resource-form-title">GET THE TEMPLATE</h3>
+      <p class="resource-form-description">Enter your email and I'll send the Agent Performance Review Template straight to your inbox.</p>
+      <form id="lead-magnet-form" class="resource-form">
+        <input type="hidden" name="leadMagnet" value="agent-performance-review" />
+        <div class="form-row">
+          <input type="text" id="name" name="name" placeholder="Your name" class="resource-input" required />
+          <input type="email" id="email" name="email" placeholder="your@email.com" class="resource-input" required />
+        </div>
+        <button type="submit" class="resource-button">SEND ME THE TEMPLATE</button>
+        <p class="form-fine-print">No spam. Just the template. Unsubscribe anytime.</p>
+      </form>
+      <div id="form-success" class="form-success" style="display: none;">
+        <h3 class="resource-form-title">CHECK YOUR INBOX</h3>
+        <p class="resource-form-description">
+          The template is on its way. Check spam if you don't see it in a few minutes.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var FORM_ENDPOINT = 'https://elliotbetancourt-contact-form.elliot-ee6.workers.dev';
+  var form = document.getElementById('lead-magnet-form');
+  var success = document.getElementById('form-success');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var button = form.querySelector('button');
+    button.disabled = true;
+    button.textContent = 'SENDING...';
+
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var leadMagnet = form.querySelector('input[name="leadMagnet"]').value;
+
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, leadMagnet: leadMagnet })
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Submission failed');
+      form.style.display = 'none';
+      success.style.display = 'block';
+    })
+    .catch(function() {
+      button.disabled = false;
+      button.textContent = 'SEND ME THE TEMPLATE';
+      alert('Something went wrong. Please try again or email elliot@elliotbetancourt.com');
+    });
+  });
+</script>
