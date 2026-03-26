@@ -15,6 +15,10 @@ const LEAD_MAGNETS = {
     fileUrl: 'https://elliotbetancourt.com/resources/files/ai-roi-measurement.pdf',
     description: 'AI ROI Measurement Framework PDF',
   },
+  'agent-performance-review': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/agent-performance-review.pdf',
+    description: 'Agent Performance Review Template PDF',
+  },
 };
 
 export default {
