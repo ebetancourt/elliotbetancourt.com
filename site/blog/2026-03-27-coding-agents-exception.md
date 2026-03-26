@@ -9,9 +9,13 @@ Coding agents are having a moment. And not a small one.
 
 In February 2026, Claude 4.5 Opus scored 76.8% on SWE-bench — a benchmark that measures whether an AI can actually solve real GitHub issues from open-source projects. Claude 2 scored 1.96% on the same test in 2023. That's a 39x improvement in under three years.
 
-Geoffrey Huntley has a [GitHub repo](https://github.com/ghuntley/how-to-build-a-coding-agent) called "how-to-build-a-coding-agent" where he lays out what he calls the Ralph Loop — roughly 300 lines of code running in a loop with LLM tokens. Read file, edit file, run command, check output, repeat. During a talk, he had a coding agent build its own coding agent. On stage.
-
 Anthropic's own SWE-bench agent uses exactly two tools: bash and edit. Two tools, 76.8% accuracy.
+
+Geoffrey Huntley has a [GitHub repo](https://github.com/ghuntley/how-to-build-a-coding-agent) called "how-to-build-a-coding-agent" where he shows you how you can build your own (admittedly simple) coding agent — roughly 300 lines of code running in a loop with LLM tokens. Read file, edit file, run command, check output, repeat. During a talk, he had a coding agent build its own coding agent. On stage.
+
+Huntley is also the [originator of the "Ralph Loop"](https://ghuntley.com/ralph/) - a literal single line of code that just pipes a specially formatted markdown prompt to the coding agent of your choice...in a never-ending loop. What does the prompt tell it to do? What's in the prompt? The prompt tells the coding agent to look at a product spec, look at the current implementation and identify the most important task to bring the current implementation closer to the spec and do it. In a loop. FOREVER...or until it achieves its goal...or more likely runs out of tokens.
+
+The miracle isn't that its good (its not REALLY). The miracle is that it works AT ALL. It definitely SHOULD NOT work.
 
 I think the more interesting question isn't how this works. It's why it only works here.
 
@@ -33,7 +37,7 @@ Software engineering is almost uniquely suited for LLM-based agents. Six reasons
 
 ## The Ralph Loop Works Because Code Lets It
 
-Huntley's Ralph Loop is elegant because the domain allows elegance. A 300-line loop builds software because the work decomposes into a tight cycle: read → edit → run → check. Each iteration gives the agent clean signal. Did the test pass? Did the build succeed? Did the linter complain? The agent knows exactly what to do next.
+Huntley's Ralph Loop is elegant because the domain allows elegance. A one-line loop builds software because the work decomposes into a tight cycle: read → edit → run → check. Each iteration gives the agent clean signal. Did the test pass? Did the build succeed? Did the linter complain? The agent knows exactly what to do next.
 
 Now try that same loop on legal contract negotiation. Financial planning. Organizational change management. Therapy.
 
