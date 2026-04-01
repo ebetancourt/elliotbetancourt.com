@@ -1,0 +1,88 @@
+---
+title: "AI Unit Economics Checklist"
+layout: "layout.html"
+---
+
+<section class="resource-hero">
+  <div class="container">
+    <div class="resource-hero-grid">
+      <div class="resource-hero-content">
+        <span class="resource-label">FREE CHECKLIST</span>
+        <h2 class="resource-title">AI Unit Economics Checklist</h2>
+        <p class="resource-subtitle">6 questions to ask before greenlighting any AI feature</p>
+        <p class="resource-description">OpenAI burned $15M/day running Sora before anyone checked the math. The tech worked fine &mdash; the economics didn't. This checklist is what I run on every AI project I touch. Six questions with a traffic-light scoring system so you know exactly where you stand before committing another quarter of engineering time.</p>
+      </div>
+      <div class="resource-hero-preview">
+        <div class="preview-card">
+          <h3 class="preview-heading">6 QUESTIONS</h3>
+          <ol class="preview-list">
+            <li><strong>Cost Per Request at Scale</strong> &mdash; Not demo scale. Production scale.</li>
+            <li><strong>Marginal Cost Per User</strong> &mdash; Linear growth or super-linear death spiral?</li>
+            <li><strong>Value vs. Inference Cost</strong> &mdash; Does the output justify the spend?</li>
+            <li><strong>Model Right-Sizing</strong> &mdash; The gap between biggest and smallest is 60x.</li>
+            <li><strong>Provider Pricing Resilience</strong> &mdash; What if costs 2x overnight?</li>
+            <li><strong>Revenue Model Alignment</strong> &mdash; Are you subsidizing every interaction?</li>
+          </ol>
+          <p class="preview-note">Each scored Green / Yellow / Red with criteria and red flags.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="resource-form-section">
+  <div class="container">
+    <div class="resource-form-content">
+      <h3 class="resource-form-title">GET THE CHECKLIST</h3>
+      <p class="resource-form-description">Enter your email and I'll send the AI Unit Economics Checklist straight to your inbox.</p>
+      <form id="lead-magnet-form" class="resource-form">
+        <input type="hidden" name="leadMagnet" value="ai-unit-economics-checklist" />
+        <div class="form-row">
+          <input type="text" id="name" name="name" placeholder="Your name" class="resource-input" required />
+          <input type="email" id="email" name="email" placeholder="your@email.com" class="resource-input" required />
+        </div>
+        <button type="submit" class="resource-button">SEND ME THE CHECKLIST</button>
+        <p class="form-fine-print">No spam. Just the checklist. Unsubscribe anytime.</p>
+      </form>
+      <div id="form-success" class="form-success" style="display: none;">
+        <h3 class="resource-form-title">CHECK YOUR INBOX</h3>
+        <p class="resource-form-description">
+          The checklist is on its way. Check spam if you don't see it in a few minutes.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var FORM_ENDPOINT = 'https://elliotbetancourt-contact-form.elliot-ee6.workers.dev';
+  var form = document.getElementById('lead-magnet-form');
+  var success = document.getElementById('form-success');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var button = form.querySelector('button');
+    button.disabled = true;
+    button.textContent = 'SENDING...';
+
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var leadMagnet = form.querySelector('input[name="leadMagnet"]').value;
+
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, leadMagnet: leadMagnet })
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Submission failed');
+      form.style.display = 'none';
+      success.style.display = 'block';
+    })
+    .catch(function() {
+      button.disabled = false;
+      button.textContent = 'SEND ME THE CHECKLIST';
+      alert('Something went wrong. Please try again or email elliot@elliotbetancourt.com');
+    });
+  });
+</script>

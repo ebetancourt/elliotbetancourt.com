@@ -19,6 +19,10 @@ const LEAD_MAGNETS = {
     fileUrl: 'https://elliotbetancourt.com/resources/files/agent-performance-review.pdf',
     description: 'Agent Performance Review Template PDF',
   },
+  'ai-unit-economics-checklist': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/ai-unit-economics-checklist.pdf',
+    description: 'AI Unit Economics Checklist PDF',
+  },
 };
 
 export default {
