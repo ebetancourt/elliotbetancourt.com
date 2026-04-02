@@ -1,7 +1,7 @@
 // Lead magnet lookup table
 // Add new entries here when creating new lead magnets.
 // fileUrl: public URL to the PDF (hosted on elliotbetancourt.com/resources/files/)
-// description: used in EmailOctopus email subject/body via {{ LeadMagnetDescription }}
+// description: used in Brevo email templates via {{ contact.LEAD_MAGNET_DESCRIPTION }}
 const LEAD_MAGNETS = {
   'agent-evaluation-framework': {
     fileUrl: 'https://elliotbetancourt.com/resources/files/agent-evaluation-framework.pdf',
@@ -55,50 +55,35 @@ export default {
         });
       }
 
-      // Build tags — always include brand tag
-      const tags = { [env.CONTACT_BRAND]: true };
+      // Build Brevo contact attributes
+      const magnet = leadMagnet ? LEAD_MAGNETS[leadMagnet] : null;
 
-      // Build fields
-      const fields = {
-        FullName: name,
-        ContactMessage: message || '',
-        ContactBrand: env.CONTACT_BRAND,
+      const attributes = {
+        FULLNAME: name,
+        CONTACT_MESSAGE: message || '',
+        CONTACT_BRAND: env.CONTACT_BRAND,
+        CONTACT_SOURCE: leadMagnet ? 'lead-magnet' : 'website-inquiry',
+        LEAD_MAGNET_ID: leadMagnet || '',
+        LEAD_MAGNET_URL: magnet?.fileUrl || '',
+        LEAD_MAGNET_DESCRIPTION: magnet?.description || '',
       };
 
-      if (leadMagnet) {
-        tags['lead-magnet'] = true;
-        tags[leadMagnet] = true;
-
-        // Look up file URL and description for EmailOctopus template variables
-        const magnet = LEAD_MAGNETS[leadMagnet];
-        if (magnet) {
-          fields.LeadMagnetUrl = magnet.fileUrl;
-          fields.LeadMagnetDescription = magnet.description;
-        }
-      } else {
-        tags['website-inquiry'] = true;
-      }
-
-      const res = await fetch(
-        `https://api.emailoctopus.com/lists/${env.EMAILOCTOPUS_LIST_ID}/contacts`,
-        {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${env.EMAILOCTOPUS_API_KEY}`,
-          },
-          body: JSON.stringify({
-            email_address: email,
-            fields,
-            tags,
-            status: 'subscribed',
-          }),
-        }
-      );
-
-      const data = await res.json();
+      const res = await fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'api-key': env.BREVO_API_KEY,
+        },
+        body: JSON.stringify({
+          email,
+          attributes,
+          listIds: [parseInt(env.BREVO_LIST_ID)],
+          updateEnabled: true,
+        }),
+      });
 
       if (!res.ok) {
+        const data = await res.json();
         return new Response(JSON.stringify({ error: 'Submission failed', details: data }), {
           status: res.status,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
