@@ -23,6 +23,10 @@ const LEAD_MAGNETS = {
     fileUrl: 'https://elliotbetancourt.com/resources/files/ai-unit-economics-checklist.pdf',
     description: 'AI Unit Economics Checklist PDF',
   },
+  'ai-systems-checklist': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/ai-systems-checklist.pdf',
+    description: 'AI Systems Readiness Checklist PDF',
+  },
 };
 
 export default {
