@@ -27,6 +27,10 @@ const LEAD_MAGNETS = {
     fileUrl: 'https://elliotbetancourt.com/resources/files/ai-systems-checklist.pdf',
     description: 'AI Systems Readiness Checklist PDF',
   },
+  'ai-agent-systems-audit': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/ai-agent-systems-audit.pdf',
+    description: 'AI Agent Systems Audit PDF',
+  },
 };
 
 export default {
