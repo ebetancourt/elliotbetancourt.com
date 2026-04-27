@@ -23,6 +23,10 @@ const LEAD_MAGNETS = {
     fileUrl: 'https://elliotbetancourt.com/resources/files/ai-unit-economics-checklist.pdf',
     description: 'AI Unit Economics Checklist PDF',
   },
+  'agent-reliability-audit': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/agent-reliability-audit.pdf',
+    description: 'Agent Reliability Audit PDF',
+  },
 };
 
 export default {
