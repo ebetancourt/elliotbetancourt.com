@@ -1,0 +1,87 @@
+---
+title: "AI Agent Systems Audit"
+layout: "layout.html"
+---
+
+<section class="resource-hero">
+  <div class="container">
+    <div class="resource-hero-grid">
+      <div class="resource-hero-content">
+        <span class="resource-label">FREE AUDIT</span>
+        <h2 class="resource-title">The AI Agent Systems Audit</h2>
+        <p class="resource-subtitle">5 dimensions. 5 minutes. Know exactly where your AI project is stuck.</p>
+        <p class="resource-description">The first instinct when an AI project stalls is to blame the model. Nine times out of ten, the model isn't the problem. This one-page audit walks through five architectural dimensions &mdash; the shifts that separate AI projects that ship from the ones that don't. Score each 5, 3, or 1. The total (out of 25) tells you where to invest next.</p>
+      </div>
+      <div class="resource-hero-preview">
+        <div class="preview-card">
+          <h3 class="preview-heading">5 DIMENSIONS</h3>
+          <ol class="preview-list">
+            <li><strong>Architecture Clarity</strong> &mdash; Can you draw your system on a napkin?</li>
+            <li><strong>Model Right-Sizing</strong> &mdash; Paying Opus for work Haiku could handle?</li>
+            <li><strong>Determinism Layer</strong> &mdash; Is the LLM doing shell-script work?</li>
+            <li><strong>Agent Specialization</strong> &mdash; One mega-agent or a team?</li>
+            <li><strong>Observability</strong> &mdash; Can you explain a decision from yesterday?</li>
+          </ol>
+          <p class="preview-note">Most AI projects fail at dimension 3. The LLM isn't the bottleneck &mdash; the scaffold around it is.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="resource-form-section">
+  <div class="container">
+    <div class="resource-form-content">
+      <h3 class="resource-form-title">GET THE AUDIT</h3>
+      <p class="resource-form-description">Enter your email and I'll send the AI Agent Systems Audit straight to your inbox.</p>
+      <form id="lead-magnet-form" class="resource-form">
+        <input type="hidden" name="leadMagnet" value="ai-agent-systems-audit" />
+        <div class="form-row">
+          <input type="text" id="name" name="name" placeholder="Your name" class="resource-input" required />
+          <input type="email" id="email" name="email" placeholder="your@email.com" class="resource-input" required />
+        </div>
+        <button type="submit" class="resource-button">SEND ME THE AUDIT</button>
+        <p class="form-fine-print">No spam. Just the audit. Unsubscribe anytime.</p>
+      </form>
+      <div id="form-success" class="form-success" style="display: none;">
+        <h3 class="resource-form-title">CHECK YOUR INBOX</h3>
+        <p class="resource-form-description">
+          The audit is on its way. Check spam if you don't see it in a few minutes.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var FORM_ENDPOINT = 'https://elliotbetancourt-contact-form.elliot-ee6.workers.dev';
+  var form = document.getElementById('lead-magnet-form');
+  var success = document.getElementById('form-success');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var button = form.querySelector('button');
+    button.disabled = true;
+    button.textContent = 'SENDING...';
+
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var leadMagnet = form.querySelector('input[name="leadMagnet"]').value;
+
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, leadMagnet: leadMagnet })
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Submission failed');
+      form.style.display = 'none';
+      success.style.display = 'block';
+    })
+    .catch(function() {
+      button.disabled = false;
+      button.textContent = 'SEND ME THE AUDIT';
+      alert('Something went wrong. Please try again or email elliot@elliotbetancourt.com');
+    });
+  });
+</script>

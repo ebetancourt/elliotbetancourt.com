@@ -27,6 +27,18 @@ const LEAD_MAGNETS = {
     fileUrl: 'https://elliotbetancourt.com/resources/files/agent-reliability-audit.pdf',
     description: 'Agent Reliability Audit PDF',
   },
+  'ai-systems-checklist': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/ai-systems-checklist.pdf',
+    description: 'AI Systems Readiness Checklist PDF',
+  },
+  'ai-agent-systems-audit': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/ai-agent-systems-audit.pdf',
+    description: 'AI Agent Systems Audit PDF',
+  },
+  'ai-adoption-readiness-audit': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/ai-adoption-readiness-audit.pdf',
+    description: 'AI Adoption Readiness Audit PDF',
+  },
 };
 
 export default {
