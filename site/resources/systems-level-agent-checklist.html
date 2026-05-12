@@ -1,0 +1,79 @@
+---
+title: "The Systems-Level Agent Checklist"
+layout: "layout.html"
+---
+
+<section class="resource-hero">
+  <div class="container">
+    <div class="resource-hero-grid">
+      <div class="resource-hero-content">
+        <span class="resource-label">FREE CHECKLIST</span>
+        <h2 class="resource-title">The Systems-Level Agent Checklist</h2>
+        <p class="resource-subtitle">6 questions that separate production-ready from demo-ready</p>
+        <p class="resource-description">88% of AI agent pilots never reach production. Not because the AI failed &mdash; because the system around it wasn&rsquo;t built for production. This checklist is what I run before calling any agent architecture production-ready. Six questions with a traffic-light scoring system so you know exactly where your gaps are before a production incident finds them for you.</p>
+      </div>
+      <div class="resource-hero-preview">
+        <div class="preview-card">
+          <h3 class="preview-heading">6 QUESTIONS</h3>
+          <ol class="preview-list">
+            <li><strong>Failure Mode Mapping</strong> &mdash; Does it know when NOT to run?</li>
+            <li><strong>Ownership Clarity</strong> &mdash; Who&rsquo;s accountable when it&rsquo;s quietly wrong?</li>
+            <li><strong>Production Cost Structure</strong> &mdash; What does this cost per request at 10x volume?</li>
+            <li><strong>Observability</strong> &mdash; Can you catch degradation before users do?</li>
+            <li><strong>Data Quality Gate</strong> &mdash; What happens with bad upstream data?</li>
+            <li><strong>Integration Resilience</strong> &mdash; What breaks when a dependency changes?</li>
+          </ol>
+          <p class="preview-note">Each scored Green / Yellow / Red with criteria and diagnostic context.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="resource-form-section">
+  <div class="container">
+    <div class="resource-form-content">
+      <h3 class="resource-form-title">GET THE CHECKLIST</h3>
+      <p class="resource-form-description">Enter your email and I&rsquo;ll send the Systems-Level Agent Checklist straight to your inbox.</p>
+      <form id="lead-magnet-form" class="resource-form">
+        <input type="hidden" name="leadMagnet" value="systems-level-agent-checklist" />
+        <div class="form-row">
+          <input type="text" id="name" name="name" placeholder="Your name" class="resource-input" required />
+          <input type="email" id="email" name="email" placeholder="your@email.com" class="resource-input" required />
+        </div>
+        <button type="submit" class="resource-button">SEND ME THE CHECKLIST</button>
+        <p class="form-fine-print">No spam. Just the checklist. Unsubscribe anytime.</p>
+      </form>
+      <div id="form-success" class="form-success" style="display: none;">
+        <h3 class="resource-form-title">CHECK YOUR INBOX</h3>
+        <p class="resource-form-description">
+          The checklist is on its way. Check spam if you don&rsquo;t see it in a few minutes.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.getElementById('lead-magnet-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const leadMagnet = 'systems-level-agent-checklist';
+
+  try {
+    const response = await fetch('https://elliotbetancourt-contact-form.elliot-ee6.workers.dev', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, leadMagnet })
+    });
+
+    if (response.ok) {
+      document.getElementById('lead-magnet-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }
+  } catch (err) {
+    console.error('Form submission error:', err);
+  }
+});
+</script>

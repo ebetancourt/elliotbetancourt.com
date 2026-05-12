@@ -39,6 +39,10 @@ const LEAD_MAGNETS = {
     fileUrl: 'https://elliotbetancourt.com/resources/files/ai-adoption-readiness-audit.pdf',
     description: 'AI Adoption Readiness Audit PDF',
   },
+  'systems-level-agent-checklist': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/systems-level-agent-checklist.pdf',
+    description: 'Systems-Level Agent Checklist PDF',
+  },
 };
 
 export default {
