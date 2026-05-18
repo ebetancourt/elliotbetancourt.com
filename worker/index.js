@@ -39,6 +39,10 @@ const LEAD_MAGNETS = {
     fileUrl: 'https://elliotbetancourt.com/resources/files/ai-adoption-readiness-audit.pdf',
     description: 'AI Adoption Readiness Audit PDF',
   },
+  'ai-governance-baseline-7-controls': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/ai-governance-baseline-7-controls.pdf',
+    description: 'AI Governance Baseline — 7 Controls Checklist PDF',
+  },
 };
 
 export default {
