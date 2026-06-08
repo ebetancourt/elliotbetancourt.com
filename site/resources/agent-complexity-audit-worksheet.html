@@ -1,0 +1,96 @@
+---
+title: "The Agent Complexity Audit Worksheet"
+layout: "layout.html"
+---
+
+<section class="resource-hero">
+  <div class="container">
+    <div class="resource-hero-grid">
+      <div class="resource-hero-content">
+        <span class="resource-label">FREE WORKSHEET</span>
+        <h2 class="resource-title">The Agent Complexity Audit Worksheet</h2>
+        <p class="resource-subtitle">5 questions to ask before building any AI agent</p>
+        <p class="resource-description">
+          Most AI agent failures aren't model failures &mdash; they're scope failures. This one-page worksheet tells you how much systems engineering you actually need before you write a line of code. Takes 5 minutes. Saves weeks of rearchitecting.
+        </p>
+      </div>
+      <div class="resource-hero-preview">
+        <div class="preview-card">
+          <h3 class="preview-heading">THE FIVE QUESTIONS</h3>
+          <ol class="preview-list">
+            <li><strong>Task Boundedness</strong> &mdash; Can you define start and end?</li>
+            <li><strong>Failure Cost</strong> &mdash; What happens when the model is wrong?</li>
+            <li><strong>Input Quality</strong> &mdash; How clean is the incoming data?</li>
+            <li><strong>Output Criticality</strong> &mdash; Where does the output go?</li>
+            <li><strong>State Requirements</strong> &mdash; Does this task need memory?</li>
+          </ol>
+          <p class="preview-note">Score each 1&ndash;5. Total tells you how much engineering you need.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="resource-form-section">
+  <div class="container">
+    <div class="resource-form-content">
+      <h3 class="resource-form-title">GET THE WORKSHEET</h3>
+      <p class="resource-form-description">
+        Enter your name and email and I'll send you the one-page worksheet &mdash; with scoring criteria for each question and a decision matrix that tells you exactly how to scope your next agent project.
+      </p>
+      <form id="lead-magnet-form" class="resource-form">
+        <input type="hidden" name="leadMagnet" value="agent-complexity-audit-worksheet" />
+        <div class="form-row">
+          <input type="text" id="name" name="name" placeholder="Your name" class="resource-input" required />
+          <input type="email" id="email" name="email" placeholder="your@email.com" class="resource-input" required />
+        </div>
+        <button type="submit" class="resource-button">SEND ME THE WORKSHEET</button>
+        <p class="form-fine-print">No spam. Just the worksheet. Unsubscribe anytime.</p>
+      </form>
+      <div id="form-success" class="form-success" style="display: none;">
+        <h3 class="resource-form-title">CHECK YOUR INBOX</h3>
+        <p class="resource-form-description">
+          The worksheet is on its way. If you don't see it in a few minutes, check your spam folder.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var FORM_ENDPOINT = 'https://elliotbetancourt-contact-form.elliot-ee6.workers.dev';
+  var form = document.getElementById('lead-magnet-form');
+  var success = document.getElementById('form-success');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var button = form.querySelector('button');
+    button.disabled = true;
+    button.textContent = 'SENDING...';
+
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var leadMagnet = form.querySelector('input[name="leadMagnet"]').value;
+
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, leadMagnet: leadMagnet })
+    })
+    .then(function(res) {
+      if (res.ok) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        button.disabled = false;
+        button.textContent = 'SEND ME THE WORKSHEET';
+        alert('Something went wrong. Please try again.');
+      }
+    })
+    .catch(function() {
+      button.disabled = false;
+      button.textContent = 'SEND ME THE WORKSHEET';
+      alert('Something went wrong. Please try again.');
+    });
+  });
+</script>
