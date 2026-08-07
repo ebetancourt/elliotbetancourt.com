@@ -3,6 +3,10 @@
 // fileUrl: public URL to the PDF (hosted on elliotbetancourt.com/resources/files/)
 // description: used in Brevo email templates via {{ contact.LEAD_MAGNET_DESCRIPTION }}
 const LEAD_MAGNETS = {
+  'governance-readiness-checklist': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/governance-readiness-checklist.pdf',
+    description: 'Agentic AI Governance Readiness Checklist PDF',
+  },
   'agent-fit-scorecard-lead-magnet': {
     fileUrl: 'https://elliotbetancourt.com/resources/files/agent-fit-scorecard-lead-magnet.pdf',
     description: 'The Agent FIT Scorecard PDF',
