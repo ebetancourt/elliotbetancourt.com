@@ -7,6 +7,14 @@ const LEAD_MAGNETS = {
     fileUrl: 'https://elliotbetancourt.com/resources/files/agent-complexity-audit-worksheet.pdf',
     description: 'Agent Complexity Audit Worksheet PDF',
   },
+  'governance-readiness-checklist': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/governance-readiness-checklist.pdf',
+    description: 'Agentic AI Governance Readiness Checklist PDF',
+  },
+  'agent-fit-scorecard-lead-magnet': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/agent-fit-scorecard-lead-magnet.pdf',
+    description: 'The Agent FIT Scorecard PDF',
+  },
   'agent-evaluation-framework': {
     fileUrl: 'https://elliotbetancourt.com/resources/files/agent-evaluation-framework.pdf',
     description: 'Agent Evaluation Framework PDF',
@@ -42,6 +50,18 @@ const LEAD_MAGNETS = {
   'ai-adoption-readiness-audit': {
     fileUrl: 'https://elliotbetancourt.com/resources/files/ai-adoption-readiness-audit.pdf',
     description: 'AI Adoption Readiness Audit PDF',
+  },
+  'ai-code-review-checklist': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/ai-code-review-checklist.pdf',
+    description: 'AI Code Review Checklist PDF',
+  },
+  'ai-architecture-decision-guide': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/ai-architecture-decision-guide.pdf',
+    description: 'AI Architecture Decision Guide PDF',
+  },
+  'agent-payback-framework-lead-magnet': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/agent-payback-framework-lead-magnet.pdf',
+    description: 'The PAYBACK Framework PDF',
   },
 };
 
