@@ -3,6 +3,10 @@
 // fileUrl: public URL to the PDF (hosted on elliotbetancourt.com/resources/files/)
 // description: used in Brevo email templates via {{ contact.LEAD_MAGNET_DESCRIPTION }}
 const LEAD_MAGNETS = {
+  'agent-complexity-audit-worksheet': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/agent-complexity-audit-worksheet.pdf',
+    description: 'Agent Complexity Audit Worksheet PDF',
+  },
   'governance-readiness-checklist': {
     fileUrl: 'https://elliotbetancourt.com/resources/files/governance-readiness-checklist.pdf',
     description: 'Agentic AI Governance Readiness Checklist PDF',
