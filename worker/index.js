@@ -47,6 +47,10 @@ const LEAD_MAGNETS = {
     fileUrl: 'https://elliotbetancourt.com/resources/files/ai-adoption-readiness-audit.pdf',
     description: 'AI Adoption Readiness Audit PDF',
   },
+  'ai-code-review-checklist': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/ai-code-review-checklist.pdf',
+    description: 'AI Code Review Checklist PDF',
+  },
   'ai-architecture-decision-guide': {
     fileUrl: 'https://elliotbetancourt.com/resources/files/ai-architecture-decision-guide.pdf',
     description: 'AI Architecture Decision Guide PDF',

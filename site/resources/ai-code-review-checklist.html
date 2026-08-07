@@ -1,0 +1,88 @@
+---
+title: "The AI Code Review Checklist"
+layout: "layout.html"
+---
+
+<section class="resource-hero">
+  <div class="container">
+    <div class="resource-hero-grid">
+      <div class="resource-hero-content">
+        <span class="resource-label">FREE CHECKLIST</span>
+        <h2 class="resource-title">The AI Code Review Checklist</h2>
+        <p class="resource-subtitle">6 areas to cover when AI writes most of the code</p>
+        <p class="resource-description">When AI writes 80% of the code, traditional code review misses what AI gets wrong. Hallucinated library references. Architectural assumptions the reviewer never approved. Tests that only verify what the AI already assumed. This checklist covers the six areas that matter most &mdash; each with a traffic-light scoring system so you know exactly where your review process stands.</p>
+      </div>
+      <div class="resource-hero-preview">
+        <div class="preview-card">
+          <h3 class="preview-heading">6 AREAS</h3>
+          <ol class="preview-list">
+            <li><strong>Correctness</strong> &mdash; Edge cases that weren't in the prompt.</li>
+            <li><strong>Dependencies</strong> &mdash; Are all imports real and version-pinned?</li>
+            <li><strong>Security</strong> &mdash; Injection risks, secrets, license exposure.</li>
+            <li><strong>Test Coverage</strong> &mdash; Do tests verify behavior or just AI's assumptions?</li>
+            <li><strong>Architecture Fit</strong> &mdash; Does it fit your system, not the AI's context?</li>
+            <li><strong>Prompt Alignment</strong> &mdash; Intent vs. literal interpretation.</li>
+          </ol>
+          <p class="preview-note">Each scored Green / Yellow / Red with criteria and the reason it matters.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="resource-form-section">
+  <div class="container">
+    <div class="resource-form-content">
+      <h3 class="resource-form-title">GET THE CHECKLIST</h3>
+      <p class="resource-form-description">Enter your email and I'll send the AI Code Review Checklist straight to your inbox.</p>
+      <form id="lead-magnet-form" class="resource-form">
+        <input type="hidden" name="leadMagnet" value="ai-code-review-checklist" />
+        <div class="form-row">
+          <input type="text" id="name" name="name" placeholder="Your name" class="resource-input" required />
+          <input type="email" id="email" name="email" placeholder="your@email.com" class="resource-input" required />
+        </div>
+        <button type="submit" class="resource-button">SEND ME THE CHECKLIST</button>
+        <p class="form-fine-print">No spam. Just the checklist. Unsubscribe anytime.</p>
+      </form>
+      <div id="form-success" class="form-success" style="display: none;">
+        <h3 class="resource-form-title">CHECK YOUR INBOX</h3>
+        <p class="resource-form-description">
+          The checklist is on its way. Check spam if you don't see it in a few minutes.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var FORM_ENDPOINT = 'https://elliotbetancourt-contact-form.elliot-ee6.workers.dev';
+  var form = document.getElementById('lead-magnet-form');
+  var success = document.getElementById('form-success');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var button = form.querySelector('button');
+    button.disabled = true;
+    button.textContent = 'SENDING...';
+
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var leadMagnet = form.querySelector('input[name="leadMagnet"]').value;
+
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, leadMagnet: leadMagnet })
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Submission failed');
+      form.style.display = 'none';
+      success.style.display = 'block';
+    })
+    .catch(function() {
+      button.disabled = false;
+      button.textContent = 'SEND ME THE CHECKLIST';
+      alert('Something went wrong. Please try again or email elliot@elliotbetancourt.com');
+    });
+  });
+</script>
