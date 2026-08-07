@@ -47,6 +47,10 @@ const LEAD_MAGNETS = {
     fileUrl: 'https://elliotbetancourt.com/resources/files/ai-adoption-readiness-audit.pdf',
     description: 'AI Adoption Readiness Audit PDF',
   },
+  'agent-payback-framework-lead-magnet': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/agent-payback-framework-lead-magnet.pdf',
+    description: 'The PAYBACK Framework PDF',
+  },
 };
 
 export default {
