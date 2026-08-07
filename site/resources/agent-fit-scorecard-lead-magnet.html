@@ -1,0 +1,92 @@
+---
+title: "The Agent FIT Scorecard"
+layout: "layout.html"
+---
+
+<section class="resource-hero">
+  <div class="container">
+    <div class="resource-hero-grid">
+      <div class="resource-hero-content">
+        <span class="resource-label">FREE SCORECARD</span>
+        <h2 class="resource-title">The Agent FIT Scorecard</h2>
+        <p class="resource-subtitle">Is this process actually a good candidate for an AI agent?</p>
+        <p class="resource-description">
+          Coding agents work because software engineering is a best-case scenario &mdash; not because agents are ready for everything else. I turned the reasoning behind why into six fit criteria. Score any candidate process before you greenlight the project, not after.
+        </p>
+      </div>
+      <div class="resource-hero-preview">
+        <div class="preview-card">
+          <h3 class="preview-heading">THE SIX DIMENSIONS</h3>
+          <ol class="preview-list">
+            <li><strong>Tool Surface</strong> &mdash; How many tools does it need?</li>
+            <li><strong>Medium</strong> &mdash; Plain text, or something messier?</li>
+            <li><strong>Correctness Signal</strong> &mdash; Does it tell you when it's wrong?</li>
+            <li><strong>Prior Art</strong> &mdash; How much precedent exists?</li>
+            <li><strong>Process Structure</strong> &mdash; Is there already a defined pattern?</li>
+            <li><strong>Judgment Requirement</strong> &mdash; Does success need taste or empathy?</li>
+          </ol>
+          <p class="preview-note">Score each 1&ndash;5. Add them up. Know exactly where you stand.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="resource-form-section">
+  <div class="container">
+    <div class="resource-form-content">
+      <h3 class="resource-form-title">GET THE SCORECARD</h3>
+      <p class="resource-form-description">
+        Enter your name and email and I'll send you the one-page scorecard &mdash; the same six questions I run against a candidate process before I'll say yes to an agent project.
+      </p>
+      <form id="lead-magnet-form" class="resource-form">
+        <input type="hidden" name="leadMagnet" value="agent-fit-scorecard-lead-magnet" />
+        <div class="form-row">
+          <input type="text" id="name" name="name" placeholder="Your name" class="resource-input" required />
+          <input type="email" id="email" name="email" placeholder="your@email.com" class="resource-input" required />
+        </div>
+        <button type="submit" class="resource-button">SEND ME THE SCORECARD</button>
+        <p class="form-fine-print">No spam. Just the scorecard. Unsubscribe anytime.</p>
+      </form>
+      <div id="form-success" class="form-success" style="display: none;">
+        <h3 class="resource-form-title">CHECK YOUR INBOX</h3>
+        <p class="resource-form-description">
+          The scorecard is on its way. If you don't see it in a few minutes, check your spam folder.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var FORM_ENDPOINT = 'https://elliotbetancourt-contact-form.elliot-ee6.workers.dev';
+  var form = document.getElementById('lead-magnet-form');
+  var success = document.getElementById('form-success');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var button = form.querySelector('button');
+    button.disabled = true;
+    button.textContent = 'SENDING...';
+
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var leadMagnet = form.querySelector('input[name="leadMagnet"]').value;
+
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, leadMagnet: leadMagnet })
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Submission failed');
+      form.style.display = 'none';
+      success.style.display = 'block';
+    })
+    .catch(function() {
+      button.disabled = false;
+      button.textContent = 'SEND ME THE SCORECARD';
+      alert('Something went wrong. Please try again or email elliot@elliotbetancourt.com');
+    });
+  });
+</script>
