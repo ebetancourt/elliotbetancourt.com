@@ -1,0 +1,88 @@
+---
+title: "Agentic AI Governance Readiness Checklist"
+layout: "layout.html"
+---
+
+<section class="resource-hero">
+  <div class="container">
+    <div class="resource-hero-grid">
+      <div class="resource-hero-content">
+        <span class="resource-label">FREE CHECKLIST</span>
+        <h2 class="resource-title">Agentic AI Governance Readiness Checklist</h2>
+        <p class="resource-subtitle">6 questions to ask before greenlighting any agent project</p>
+        <p class="resource-description">Gartner predicts over 40% of agentic AI projects will be canceled by 2027 &mdash; not because the models fail, but because of escalating costs, unclear ROI, and missing risk controls. This is the six-item check I run before I'll say yes to a client's agentic AI project. Traffic-light scored so you know exactly where you stand before you write the first line of code.</p>
+      </div>
+      <div class="resource-hero-preview">
+        <div class="preview-card">
+          <h3 class="preview-heading">6 QUESTIONS</h3>
+          <ol class="preview-list">
+            <li><strong>Decision Authority</strong> &mdash; Who can approve or override an action?</li>
+            <li><strong>Audit Trail</strong> &mdash; Can every action be traced to a decision point?</li>
+            <li><strong>Cost Ceiling</strong> &mdash; Is there a hard stop on spend or scope?</li>
+            <li><strong>Human Escalation Path</strong> &mdash; A defined trigger to hand back to a person?</li>
+            <li><strong>Data Access Scope</strong> &mdash; Least-privilege, not "give it everything"?</li>
+            <li><strong>Rollback Plan</strong> &mdash; Can it be turned off without breaking the workflow?</li>
+          </ol>
+          <p class="preview-note">Each scored Green / Yellow / Red with a "why it matters" note.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="resource-form-section">
+  <div class="container">
+    <div class="resource-form-content">
+      <h3 class="resource-form-title">GET THE CHECKLIST</h3>
+      <p class="resource-form-description">Enter your email and I'll send the Governance Readiness Checklist straight to your inbox.</p>
+      <form id="lead-magnet-form" class="resource-form">
+        <input type="hidden" name="leadMagnet" value="governance-readiness-checklist" />
+        <div class="form-row">
+          <input type="text" id="name" name="name" placeholder="Your name" class="resource-input" required />
+          <input type="email" id="email" name="email" placeholder="your@email.com" class="resource-input" required />
+        </div>
+        <button type="submit" class="resource-button">SEND ME THE CHECKLIST</button>
+        <p class="form-fine-print">No spam. Just the checklist. Unsubscribe anytime.</p>
+      </form>
+      <div id="form-success" class="form-success" style="display: none;">
+        <h3 class="resource-form-title">CHECK YOUR INBOX</h3>
+        <p class="resource-form-description">
+          The checklist is on its way. Check spam if you don't see it in a few minutes.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var FORM_ENDPOINT = 'https://elliotbetancourt-contact-form.elliot-ee6.workers.dev';
+  var form = document.getElementById('lead-magnet-form');
+  var success = document.getElementById('form-success');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var button = form.querySelector('button');
+    button.disabled = true;
+    button.textContent = 'SENDING...';
+
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var leadMagnet = form.querySelector('input[name="leadMagnet"]').value;
+
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, leadMagnet: leadMagnet })
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Submission failed');
+      form.style.display = 'none';
+      success.style.display = 'block';
+    })
+    .catch(function() {
+      button.disabled = false;
+      button.textContent = 'SEND ME THE CHECKLIST';
+      alert('Something went wrong. Please try again or email elliot@elliotbetancourt.com');
+    });
+  });
+</script>
