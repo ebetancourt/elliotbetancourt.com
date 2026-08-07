@@ -1,0 +1,85 @@
+---
+title: "The Agent Task Fit Matrix"
+layout: "layout.html"
+---
+
+<section class="resource-hero">
+  <div class="container">
+    <div class="resource-hero-grid">
+      <div class="resource-hero-content">
+        <span class="resource-label">FREE FRAMEWORK</span>
+        <h2 class="resource-title">The Agent Task Fit Matrix</h2>
+        <p class="resource-subtitle">5 dimensions for deciding where AI agents belong — before you build</p>
+        <p class="resource-description">Most AI agent failures aren't model failures. They're deployment failures. Someone put an agent on a task it was never going to win. This one-pager gives you a structured way to evaluate any business process before you build an agent for it. Score across five dimensions. Know before you build.</p>
+      </div>
+      <div class="resource-hero-preview">
+        <div class="preview-card">
+          <h3 class="preview-heading">THE 5 DIMENSIONS</h3>
+          <ol class="preview-list">
+            <li><strong>Trigger Clarity</strong> &mdash; Does the agent know unambiguously when to start?</li>
+            <li><strong>Output Verifiability</strong> &mdash; Can you check if it succeeded without re-running it?</li>
+            <li><strong>Error Cost</strong> &mdash; What happens when it's wrong?</li>
+            <li><strong>Tool Surface</strong> &mdash; How many APIs does it need to touch?</li>
+            <li><strong>Iteration Speed</strong> &mdash; How fast can you detect and correct failures?</li>
+          </ol>
+          <p class="preview-note">Score each 1–5. Know before you build.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="resource-form-section">
+  <div class="container">
+    <div class="resource-form-content">
+      <h3 class="resource-form-title">GET THE FRAMEWORK</h3>
+      <p class="resource-form-subtitle">Enter your email and I'll send it straight to you.</p>
+      <form class="resource-form" id="lead-magnet-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+        </div>
+        <input type="hidden" name="leadMagnet" value="agent-task-fit-matrix">
+        <button type="submit" class="btn btn-primary">Send Me the Matrix</button>
+      </form>
+      <p class="resource-form-note">No spam. Unsubscribe any time.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+document.getElementById('lead-magnet-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  const payload = {
+    name: form.name.value,
+    email: form.email.value,
+    leadMagnet: form.leadMagnet.value
+  };
+
+  try {
+    const res = await fetch('https://elliotbetancourt-contact-form.elliot-ee6.workers.dev', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (res.ok) {
+      form.innerHTML = '<p class="form-success">✓ Check your inbox — the matrix is on its way.</p>';
+    } else {
+      throw new Error('Server error');
+    }
+  } catch (err) {
+    btn.textContent = 'Send Me the Matrix';
+    btn.disabled = false;
+    alert('Something went wrong. Try again or email me directly.');
+  }
+});
+</script>
