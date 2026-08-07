@@ -7,6 +7,10 @@ const LEAD_MAGNETS = {
     fileUrl: 'https://elliotbetancourt.com/resources/files/governance-readiness-checklist.pdf',
     description: 'Agentic AI Governance Readiness Checklist PDF',
   },
+  'agent-fit-scorecard-lead-magnet': {
+    fileUrl: 'https://elliotbetancourt.com/resources/files/agent-fit-scorecard-lead-magnet.pdf',
+    description: 'The Agent FIT Scorecard PDF',
+  },
   'agent-evaluation-framework': {
     fileUrl: 'https://elliotbetancourt.com/resources/files/agent-evaluation-framework.pdf',
     description: 'Agent Evaluation Framework PDF',
