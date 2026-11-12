@@ -10,16 +10,16 @@ tags: "pages"
       <img src="/images/avatar.png" alt="Elliot Betancourt" class="about-avatar" />
       <div class="about-intro">
         <h1 class="about-name">Elliot Betancourt</h1>
-        <p class="about-title">CTO & AI Engineer</p>
+        <p class="about-title">AI Engineer & Technical Lead</p>
         <p class="about-company">HipDot Media, Inc.</p>
       </div>
     </div>
 
     <div class="about-content">
       <p>
-        I'm a Consultant, Software Engineer, and AI Engineer with over 20 years of experience
-        architecting business solutions. I specialize in building scalable web applications,
-        leading engineering teams, and integrating AI capabilities into products.
+        I'm an AI engineer and technical lead with 25+ years of software development experience.
+        I build AI capabilities into working products, deliver full-stack applications,
+        and help engineering teams ship.
       </p>
 
       <p>
