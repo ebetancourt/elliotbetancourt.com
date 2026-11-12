@@ -17,9 +17,9 @@ tags: "pages"
 
     <div class="about-content">
       <p>
-        I'm an AI engineer and technical lead with 25+ years of experience
-        architecting business solutions. I specialize in building scalable web applications,
-        leading engineering teams, and integrating AI capabilities into products.
+        I'm an AI engineer and technical lead with 25+ years of software development experience.
+        I build AI capabilities into working products, deliver full-stack applications,
+        and help engineering teams ship.
       </p>
 
       <p>
