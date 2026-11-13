@@ -2,7 +2,7 @@
 title: 'A Frontier Lab Just Became a PE-Backed Services Firm'
 date: '2026-07-24'
 tags: ['ai', 'consulting', 'fractional-cto', 'business', 'strategy']
-summary: 'Anthropic just co-launched a $1.5B enterprise AI services firm with Blackstone and Hellman & Friedman. What that means for independents already doing the implementation work — and why scale isn'\''t the same as fit.'
+summary: 'Anthropic just co-launched a $1.5B enterprise AI services firm with Blackstone and Hellman & Friedman. What that means for independents already doing the implementation work — and why scale isn''t the same as fit.'
 ---
 
 On July 15, Anthropic launched Ode with Anthropic alongside Blackstone and Hellman & Friedman — a $1.5 billion enterprise AI services firm, backed by a consortium that also includes Goldman Sachs, General Atlantic, Apollo, GIC, and Sequoia. It's built on the team of an acquired company called Fractional AI.
